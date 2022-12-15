@@ -21,22 +21,15 @@ function Sign() {
 
   const handleform = (e) => {
     e.preventDefault()
-
     if(localStorage.getItem('users_data')){
       // data exists
       users_data = JSON.parse(localStorage.getItem('users_data'))
-     
-      // if (val.email===users_data){
-      //    alert("failed")
-      // }
     }
-    for( let i=0;i<=users_data.length;i++){
-      console.log("user_data-email",users_data[i].email)
+    let exist = users_data?.filter((ud) => ud.email == val.email)
+    if(exist.length>0){
+      alert("email is already exist")
+      return false
     }
-    // users_data.filter((data)=>{
-    //   console.log(data)
-    // })
-    
     var user_data = {
       name: val.name,
       email: val.email,
@@ -45,8 +38,7 @@ function Sign() {
     }
     users_data.push(user_data)
     localStorage.setItem("users_data", JSON.stringify(users_data))
-
-    // navigate("/login")
+    alert("Users registered succesfully")
   }
 
   return (

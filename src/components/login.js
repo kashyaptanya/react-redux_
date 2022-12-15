@@ -19,13 +19,17 @@ const Login = () => {
         // console.log("miuh",userData)
         if (userData) {
             userData = JSON.parse(userData)
-            if (val.name === userData?.name && val.email === userData?.email) {
+            let loginCheck = userData?.filter((ud) => ud.name == val.name && ud.email == val?.email)
+            if(loginCheck?.length>0){
+                //login success
+                dispatch(setUserData(loginCheck[0]))
                 alert("login successfully")
-                dispatch(setUserData(val))
+                return false
             }
-        } else {
             alert("invalid login")
+            return false
         }
+        alert("invalid login")
     }
 
     useEffect(() => {
