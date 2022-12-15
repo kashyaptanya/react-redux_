@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 
-const Loginform = () => {
+const HOME = () => {
   let { user_data } = useSelector((state) => state.users)
 
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const Loginform = () => {
     </>
   )
 }
-export default Loginform
+export default HOME
 
 
 
