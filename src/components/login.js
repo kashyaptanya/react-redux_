@@ -19,8 +19,8 @@ const Login = () => {
         // console.log("miuh",userData)
         if (userData) {
             userData = JSON.parse(userData)
-            let loginCheck = userData?.filter((ud) => ud.name == val.name && ud.email == val?.email)
-            if(loginCheck?.length>0){
+            let loginCheck = userData?.filter((ud) => ud.email == val?.email && ud.password == val.password )
+            if (loginCheck?.length > 0) {
                 //login success
                 dispatch(setUserData(loginCheck[0]))
                 alert("login successfully")
@@ -33,7 +33,7 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if(user_data){
+        if (user_data) {
             navigate("/home")
         }
     }, [user_data])
@@ -42,17 +42,18 @@ const Login = () => {
         <>
             <h1 className="text-center p-3">login </h1>
             <form className="style" onSubmit={handleform}>
-                <div className="form-group m-3">
-                    <label>Name</label>
-                    <input type="text" required value={val.name} onChange={(e) => handlevalue(e, 'name')} className="form-control" placeholder="Enter name" />
-                </div>
+           
                 <div className="form-group m-3">
                     <label>Email address</label>
                     <input type="email" required value={val.email} onChange={(e) => handlevalue(e, 'email')} className="form-control" placeholder="Enter email" />
                 </div>
+                <div className="form-group m-3">
+                    <label>Password</label>
+                    <input type="text" required value={val.password} onChange={(e) => handlevalue(e, 'password')} className="form-control" placeholder="Enter name" />
+                </div>
                 <button type="submit" className="btn btn-primary m-3">Submit</button>
                 <br></br>
-        <a href="http://localhost:3000/login">Don't have an account ?</a>
+                <a href="http://localhost:3000/login">Don't have an account ?</a>
             </form>
         </>
     )

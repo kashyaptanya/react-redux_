@@ -6,19 +6,20 @@ import Home from './components/home'
 import { Provider } from "react-redux"
 import store from './store';
 
-function App  ()  {
+function App() {
   return (
     <Provider store={store}>
-     <BrowserRouter>
-      <Routes>
-        
-        <Route  path="/" exact={true} element={<Sign/>} />
-        <Route  path="/login" element={<Login/>} />
-        <Route  path="/home" element={<Home/>} />
-        
-      </Routes>
-    </BrowserRouter> 
+      <BrowserRouter>
+        <Routes>
+
+          <Route path="/" exact={true} element={<Sign />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+
+        </Routes>
+      </BrowserRouter>
     </Provider>
   )
 }
+
 export default App

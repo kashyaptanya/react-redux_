@@ -8,11 +8,11 @@ const HOME = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("sssssss",user_data)
-    if(!user_data){
+    // console.log("data",user_data)
+    if (!user_data) {
       navigate("/")
     }
-  },[user_data])
+  }, [user_data])
 
   return (
     <>
@@ -20,17 +20,16 @@ const HOME = () => {
       <form className="style">
         <div className="form-group m-3">
           <label>Name</label>
-          <input className="form-control text-primary"  value={user_data?.name}/>
+          <input className="form-control text-primary" value={user_data?.name} />
         </div>
         <div className="form-group m-3">
           <label>Email address</label>
-          <input className="form-control text-primary"value={user_data?.email} />
+          <input className="form-control text-primary" value={user_data?.email} />
         </div>
         <div className="form-group m-3">
           <label>Contact</label>
           <input className="form-control text-primary" value={user_data?.phone} />
         </div>
-
       </form>
     </>
   )

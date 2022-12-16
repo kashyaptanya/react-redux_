@@ -1,11 +1,11 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 import users from "../reducer/user"
 
-const  appReducer = combineReducers({
+const appReducer = combineReducers({
     users
 })
 
-const rootReducer = (state , action) => {
+const rootReducer = (state, action) => {
     return appReducer(state, action)
 }
 

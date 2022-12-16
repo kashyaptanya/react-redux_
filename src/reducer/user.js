@@ -6,7 +6,7 @@ const initialState = {
     user_data: null
 }
 
-export default (state = initialState, action) => {
+const user = (state = initialState, action) => {
     const { type, payload } = action
     switch (type) {
         case GET_USER_DATA:
@@ -18,3 +18,5 @@ export default (state = initialState, action) => {
             return state
     }
 }
+
+export default user
