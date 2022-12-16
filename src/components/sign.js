@@ -30,6 +30,7 @@ function Sign() {
     users_data.push(user_data)
     localStorage.setItem("users_data", JSON.stringify(users_data))
     alert("Users registered succesfully")
+    setValue({})
   }
   return (
     <>

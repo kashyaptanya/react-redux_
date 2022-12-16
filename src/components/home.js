@@ -1,18 +1,34 @@
 import { useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom";
+import { setUserData } from "../action/user";
 
 const HOME = () => {
   let { user_data } = useSelector((state) => state.users)
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // console.log("data",user_data)
     if (!user_data) {
-      navigate("/")
+      let active_user = localStorage.getItem("active_user")
+      if(!active_user){
+        navigate("/login")
+      } else {
+        let all_users = localStorage.getItem('users_data')
+        if(all_users){
+          all_users = JSON.parse(all_users)
+          let activeUserData = all_users?.filter((au) => au.email == active_user)
+          if (activeUserData?.length > 0) {
+            dispatch(setUserData(activeUserData[0]))
+          }
+        } else {
+          localStorage.removeItem("active_user")
+          navigate("/login")
+        }
+      }
     }
-  }, [user_data])
+  },[user_data])
 
   return (
     <>
